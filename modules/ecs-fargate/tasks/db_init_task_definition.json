@@ -1,0 +1,40 @@
+[
+  {
+    "name": "db-init",
+    "image": "${image}",
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${log_group}",
+        "awslogs-region": "us-east-1",
+        "awslogs-stream-prefix": "db_init"
+      }
+    },
+    "environment": [
+      {
+        "name": "MYSQL_HOST",
+        "value": "${database_host}"
+      },
+      {
+        "name": "MYSQL_USER",
+        "value": "${app_database_username}"
+      },
+      {
+        "name": "MYSQL_PASSWORD",
+        "value": "${app_database_password}"
+      },
+      {
+        "name": "MYSQL_DATABASE",
+        "value": "${database_name}"
+      },
+      {
+        "name": "MYSQL_ROOT_USER",
+        "value": "${database_username}"
+      },
+      {
+        "name": "MYSQL_ROOT_PASSWORD",
+        "value": "${database_password}"
+      }
+    ]
+  }
+]
