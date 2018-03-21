@@ -1,0 +1,5 @@
+staging/.terraform/
+staging/staging_key
+staging/staging_key.pub
+staging/terraform.tfstate
+staging/terraform.tfstate.backup
