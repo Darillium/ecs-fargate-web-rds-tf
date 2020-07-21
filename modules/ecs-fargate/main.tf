@@ -1,12 +1,12 @@
 /*====
 Cloudwatch Log Group
 ======*/
-resource "aws_cloudwatch_log_group" "petclinic" {
-  name = "petclinic"
+resource "aws_cloudwatch_log_group" "petclinic-lg" {
+  name = "petclinic-app"
 
   tags {
     Environment = "${var.environment}"
-    Application = "PetClinic"
+    Application = "Darillium PetClinic"
   }
 }
 
@@ -40,7 +40,8 @@ data "template_file" "web_task" {
     database_name   = "${var.database_name}"
     app_database_username = "${var.app_database_username}"
     app_database_password = "${var.app_database_password}"
-    log_group       = "${aws_cloudwatch_log_group.petclinic.name}"
+    log_group       = "${aws_cloudwatch_log_group.petclinic-lg.name}"
+    logs_region = "${var.logs_region}"
   }
 }
 
@@ -69,7 +70,8 @@ data "template_file" "db_init_task" {
     app_database_password = "${var.app_database_password}"
     #secret_key_base = "${var.secret_key_base}"
     #database_url    = "postgresql://${var.database_username}:${var.database_password}@${var.database_endpoint}:5432/${var.database_name}?encoding=utf8&pool=40"
-    log_group       = "${aws_cloudwatch_log_group.petclinic.name}"
+    log_group       = "${aws_cloudwatch_log_group.petclinic-lg.name}"
+    logs_region = "${var.logs_region}"
   }
 }
 

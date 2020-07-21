@@ -50,6 +50,10 @@ variable "database_name" {
   description = "The database that the app will use"
 }
 
+variable "logs_region" {
+  description = "the region for the Cloud Watch logs"
+}
+
 # variable "repository_name" {
 #   description = "The name of the repisitory"
 # }

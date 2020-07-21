@@ -2,7 +2,7 @@
 Variables used across all modules
 ======*/
 locals {
-  staging_availability_zones = ["us-east-1a", "us-east-1b"]
+  staging_availability_zones = ["eu-west-2a", "eu-west-2b"]
 }
 
 provider "aws" {
@@ -55,5 +55,6 @@ module "ecs-fargate" {
   database_password   = "${var.staging_database_password}"
   app_database_username   = "${var.staging_app_database_username}"
   app_database_password   = "${var.staging_app_database_password}"
+  logs_region   = "${var.region}"
   #secret_key_base     = "${var.staging_secret_key_base}"
 }
